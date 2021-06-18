@@ -1,41 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css'
 import axios from 'axios'
-
-//sorting
-const useSortableData = (items, config = null) => {
-  const [sortConfig, setSortConfig] = React.useState(config)
-
-  const sortedItems = React.useMemo(() => {
-    let sortableItems = [...items]
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1
-        }
-        return 0
-      })
-    }
-    return sortableItems
-  }, [items, sortConfig])
-
-  const requestSort = (key) => {
-    let direction = 'ascending'
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === 'ascending'
-    ) {
-      direction = 'descending'
-    }
-    setSortConfig({ key, direction })
-  }
-
-  return { items: sortedItems, requestSort, sortConfig }
-}
+import Table from './Table.js'
 
 const App = () => {
   //react
@@ -147,36 +113,3 @@ const App = () => {
 }
 
 export default App
-/*
-  function processJSON(data) {
-    console.log(data.stargazers_count)
-    console.log(data)
-  }
-
-  function sortByStars() {}
-
-  function sortByForks() {}
-
-  function sortByIssues() {}
-
-  function Container(props) {
-    callAPI()
-    //validation/processing
-    return (
-      <div>
-        <h2>{props.name}</h2>
-        <ul>
-          <li>{props.stars}</li>
-        </ul>
-      </div>
-    )
-  }
-  return (
-    <div className="App">
-      <h1>Frameworks</h1>
-      <Container name="React" stars="200" />
-      <Container name="Angular" stars="600" />
-      <Container name="Ember" stars="400" />
-    </div>
-  );
-  */
