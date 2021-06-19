@@ -1,7 +1,7 @@
-# Framework Evaluator
+This was an interesting task for me to complete due to my lack of exposure to React.js and Github APIs. 
 
-## Getting Started
+For this challenge, my approach was to first figure out how to handle the information from the Github APIs. It was decided to use the attributes stargazers_count, Forks, issues, and description for the table. 
+-UseState was used to obtain theses attributes from the frameworks
+-multiple API requests were made through the use of axios.all
 
-This project contains an API service class out of the box to make it easier to interact with the GitHub API. This is located in [`./api/api.js`](./api/api.js). If you find that this does not meet your needs, you can pull in another third-party library or use fetch directly.
-
-Good luck!
+For the table, I used basic html and populated through the use of previously created constants. 
